@@ -58,7 +58,8 @@ export const StateContextProvider = ({ children }) => {
       classes,
       students,
       userDetails,
-      tests
+      tests,
+      fetchUserDetails
     }}>
       {children}
     </StateContext.Provider>

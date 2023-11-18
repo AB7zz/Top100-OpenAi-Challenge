@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "59092827506",
+    "project_id": "edugpt-7d13b",
+    "storage_bucket": "edugpt-7d13b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:59092827506:android:df8589c76ffd725f8771eb",
+        "android_client_info": {
+          "package_name": "com.edugpt"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8GmizJ1J1by4Mfb5ZRpRahIBRj2_7aDQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

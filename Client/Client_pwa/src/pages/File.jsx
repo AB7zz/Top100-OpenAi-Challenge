@@ -18,7 +18,11 @@ const File = () => {
 
         const result = await convertApi.convert('pdf', 'txt', params);
         console.log(result.dto.Files[0].Url)
-        const response = await axios.post('https://eduu-server-dfd0c081bcc6.herokuapp.com/api/pdf', {url: result.dto.Files[0].Url})
+        const response = await axios.post('https://eduu-server-dfd0c081bcc6.herokuapp.com/api/pdf', {url: result.dto.Files[0].Url}, {
+          headers: {
+            Authorization: localStorage.getItem('accessToken')
+          }
+        })
         if(response){
             // redirect to another page
         }

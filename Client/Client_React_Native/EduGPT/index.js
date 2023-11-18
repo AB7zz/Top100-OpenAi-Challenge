@@ -8,13 +8,13 @@ import {AppRegistry} from 'react-native';
 
 firebase.messaging().setBackgroundMessageHandler(async remoteMessage => {
   try {
-    // NotificationManager(
-    //     {
-    //       title: "remoteMessage.data.TITLE",
-    //       message: "remoteMessage.data.MESSAGE",
-    //       id: "remoteMessage.data.ID",
-    //     }
-    //   )
+    NotificationManager(
+        {
+          title: remoteMessage.data.TITLE,
+          message: remoteMessage.data.MESSAGE,
+          id: "remoteMessage.data.ID",
+        }
+      )
   } catch (error) {
     console.log('setBackgroundMessageHandler error!: ', error);
   }

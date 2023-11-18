@@ -115,7 +115,11 @@ function Questions() {
       setScore((prevScore) => prevScore + 1);
     }else{
       setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
-      await axios.post('https://eduu-server-dfd0c081bcc6.herokuapp.com/api/wronganswer', {question: currentQuestion.question, uid: localStorage.getItem('uid'), classId: className})
+      await axios.post('https://eduu-server-dfd0c081bcc6.herokuapp.com/api/wronganswer', {question: currentQuestion.question, uid: localStorage.getItem('uid'), classId: className}, {
+        headers: {
+          Authorization: localStorage.getItem('accessToken')
+        }
+      })
     }
 
   };
@@ -158,7 +162,11 @@ function Questions() {
   };
 
   const onSubmit = async() => {
-    await axios.post('https://eduu-server-dfd0c081bcc6.herokuapp.com/api/submitanswer', {uid: localStorage.getItem('uid'), testId: id , points: score})
+    await axios.post('https://eduu-server-dfd0c081bcc6.herokuapp.com/api/submitanswer', {uid: localStorage.getItem('uid'), testId: id , points: score}, {
+      headers: {
+        Authorization: localStorage.getItem('accessToken')
+      }
+    })
     // return
   }
 
@@ -176,7 +184,7 @@ function Questions() {
 
   return (
     <div>
-      {questions && !userDetails.points && currentQuestionIndex < questions.length ? (
+      {questions && currentQuestionIndex < questions.length ? (
         renderQuestion(questions)
       ) : ""}
     </div>

@@ -3,13 +3,13 @@ import {
 } from './NotificationHelper';
 
 export const NotificationManager = async (
-  {notification}
+  notification: { title: any; message: any; id: string; }
 ) => {
-
+  console.log(notification.message)
   sendNotification({
     channelId: "edu_gpt_channel",
-    title: "notification.title",
-    message: "notification.message",
+    title: notification.title,
+    message: notification.message,
     invokeApp: false,
     importance: 'high',
     playSound: true,

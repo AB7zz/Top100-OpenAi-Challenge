@@ -31,7 +31,11 @@ function Otp({ handleLoginchange,PhoneNumber }) {
         localStorage.setItem('refreshToken', refreshToken)
         localStorage.setItem('phone', `${PhoneNumber}`)
         localStorage.setItem('uid', user.uid)
-        const result = await axios.post('https://eduu-server-dfd0c081bcc6.herokuapp.com/api/login', {uid: user.uid, phone: PhoneNumber})
+        const result = await axios.post('https://eduu-server-dfd0c081bcc6.herokuapp.com/api/login', {uid: user.uid, phone: PhoneNumber}, {
+          headers: {
+            Authorization: localStorage.getItem('accessToken')
+          }
+        })
         if(result.data.exists){
           fetchUserDetails()
           if(userDetails){

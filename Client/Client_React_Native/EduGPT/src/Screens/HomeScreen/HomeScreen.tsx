@@ -4,7 +4,7 @@ import CustomWebView from '../../Components/WebView/CustomWebView'
 
 const HomeScreen = () => {
   return (
-    <CustomWebView webviewUrl={"https://testfcm.com/"}/>
+    <CustomWebView webviewUrl={"https://65572e38447a837804abf719--stalwart-naiad-fbb5b1.netlify.app/home"}/>
   )
 }
 

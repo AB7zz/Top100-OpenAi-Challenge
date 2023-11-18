@@ -16,15 +16,14 @@ import WebView, { WebViewNavigation } from 'react-native-webview';
 import { ShouldStartLoadRequest } from 'react-native-webview/lib/WebViewTypes';
 import { WebViewMessage } from 'react-native-webview/lib/WebViewTypes';
 import { useDispatch, useSelector } from 'react-redux';
-import { setLoggedIn, setUserType } from '../../Redux/App/appSlice';
-import { AsyncSet } from '../../AsyncStorage/AsyncStorage';
 
 
-const CustomWebView = ({ webviewUrl }) => {
+const MainScreen = () => {
     const dispatch = useDispatch();
     const data = useSelector(state => state.app);
+    // const navigation = useNavigation();
 
-    const [webViewUrl, setWebViewUrl] = useState(webviewUrl);
+    // const [webViewUrl, setWebViewUrl] = useState(webviewUrl);
 
     var webviewRef: WebView<{
         ref: unknown;
@@ -46,9 +45,8 @@ const CustomWebView = ({ webviewUrl }) => {
         incognito: boolean;
     }> | null;
 
-    console.log(data)
+    // console.log(data)
     
-    const navigation = useNavigation();
 
     // useEffect(() => {
     //     setWebViewUrl(webviewUrl);
@@ -66,16 +64,26 @@ const CustomWebView = ({ webviewUrl }) => {
     const onMessage = async (event: WebViewMessage) => {
         try {
             const postMessage = JSON.parse(event.data);
-            console.log('Post Message: '+ postMessage);
-            dispatch(setLoggedIn(true))
-            dispatch(setUserType(postMessage.userType))
-  
+            if(postMessage.auth){
+                console.log("auth")
+            }
+            // console.log('Post Message: '+ postMessage);
+            // dispatch(setLoggedIn(true))
+            // dispatch(setUserType(postMessage.userType))
+            // navigation.navigate("botnavcontroller")
+            // AsyncSet("loginstatus","true")
+            // AsyncSet("userType","teacher");
+            // if(postMessage.type=="auth"){
+            //     // postMessage.loggedIn=="true"&&dispatch(setLoggedIn(true))
+            //     // postMessage.userType=="teacher"?dispatch(setUserType("teacher")):dispatch(setUserType("student"))
 
+            // }else{
+            // }
         } catch { }
     };
     return (
         <WebView
-            ref={ref => (webviewRef = ref)}
+            // ref={ref => (webviewRef = ref)}
 
             startInLoadingState={true}
             onMessage={e => onMessage(e.nativeEvent)}
@@ -89,7 +97,7 @@ const CustomWebView = ({ webviewUrl }) => {
             onNavigationStateChange={e => handleNavigationStateChange(e)}
 
             mixedContentMode={'always'}
-            source={{ uri: webviewUrl }}
+            source={{ uri: data.homeUrl }}
             injectedJavaScript={`
         window.getSelection().removeAllRanges();
         document.body.style.userSelect = 'none';
@@ -111,7 +119,7 @@ const CustomWebView = ({ webviewUrl }) => {
 
 };
 
-export default CustomWebView;
+export default MainScreen;
 
 const styles = StyleSheet.create({
     cont: {

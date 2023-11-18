@@ -4,7 +4,7 @@ import CustomWebView from '../../Components/WebView/CustomWebView'
 
 const StatsScreen = () => {
   return (
-    <CustomWebView webviewUrl={"https://www.npmjs.com/package/react-native-rename"}/>
+    <CustomWebView webviewUrl={"https://65572e38447a837804abf719--stalwart-naiad-fbb5b1.netlify.app/progress/test1"}/>
   )
 }
 

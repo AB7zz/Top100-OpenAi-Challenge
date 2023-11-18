@@ -25,7 +25,11 @@ const DataBox = () => {
       userType: userType == 0 ? 'university' : userType == 1 ? 'teacher' : 'student'
     };
     window.postMessage(JSON.stringify(messageData), '*');
-    const result = await axios.post('https://eduu-server-dfd0c081bcc6.herokuapp.com/api/setdata', {name, type: userType, class: className, uid: localStorage.getItem('uid')})
+    const result = await axios.post('https://eduu-server-dfd0c081bcc6.herokuapp.com/api/setdata', {name, type: userType, class: className, uid: localStorage.getItem('uid')}, {
+      headers: {
+        Authorization: localStorage.getItem('accessToken')
+      }
+    })
     if(result){
         window.location.replace('/home')
     }

@@ -61,6 +61,7 @@ export const CreateNotificationChannels =
 
 
 export const sendNotification = async notification => {
+  console.log(notification)
   Notification.localNotification(notification);
 };
 

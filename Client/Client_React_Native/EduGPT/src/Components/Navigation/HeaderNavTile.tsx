@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, Image, Pressable } from 'react-native'
 import React from 'react'
-import { chatgptIcon } from '../../Constants/constants'
+import { chatgptIcon, primaryColor } from '../../Constants/constants'
 import { useNavigation } from '@react-navigation/native';
 
 const HeaderNavTile = () => {
@@ -9,8 +9,7 @@ const HeaderNavTile = () => {
     return (
         <View style={styles.cont}>
             <View style={{ flexDirection: "row", alignItems: "center" }}>
-                <Image style={styles.logoImg} source={chatgptIcon} />
-                <Text style={styles.headerTxt}>Edu GPT</Text>
+                {/* <Text style={styles.headerTxt}>Eduu</Text> */}
             </View>
             <Pressable onPress={()=>{navigation.navigate("profilescreen")}}>
             <Image style={styles.profileImg} source={chatgptIcon} />
@@ -33,7 +32,7 @@ const styles = StyleSheet.create({
     profileImg: {
         width: 46, height: 46,
         marginVertical: 12,
-        marginRight:32
+        marginRight:68
     },
     logoImg:{
         width: 46, height: 46,
@@ -43,7 +42,8 @@ const styles = StyleSheet.create({
         margin: 8,
         fontSize: 24,
         letterSpacing: 1,
-        fontWeight: 400
+        fontWeight: 400,
+        color:primaryColor
 
     }
 })

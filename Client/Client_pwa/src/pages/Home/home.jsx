@@ -5,6 +5,11 @@ import teach from "../../assets/teach.jpg";
 import { useStateContext }from "../../context/StateContext";
 
 export default function Home() {
+  React.useEffect(() => {
+    if(!localStorage.getItem('uid') || localStorage.getItem('uid') == ''){
+      window.location.replace('/login')
+    }
+  }, [])
   const {classes, tests, userDetails} = useStateContext()
   return (
     <div className="h-screen mx-auto px-4 mt-16">

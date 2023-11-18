@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Provider, useDispatch } from 'react-redux';
@@ -10,18 +10,11 @@ import { darkGrey } from '../Constants/constants';
 import ProfileScreen from '../Screens/ProfileScreen/ProfileScreen';
 import { NotificationListener } from '../Notification/NotificationListener';
 import { ReginsterNotification } from '../Notification/NotificationHelper';
+import { AsyncGet } from '../AsyncStorage/AsyncStorage';
 
 const StackController = () => {
   const Stack = createNativeStackNavigator();
 
-  const dispatch = useDispatch();
-
-
-  useEffect(() => {
-    ReginsterNotification();
-    NotificationListener();
-    
-  }, []);
 
 
   return (
@@ -38,13 +31,7 @@ const StackController = () => {
           <Stack.Screen
             name='botnavcontroller'
             component={BottomNavController}
-            options={{ headerTitle: (props) => <HeaderNavTile />, headerTintColor: darkGrey }}
-          />
-
-          <Stack.Screen
-            name='profilescreen'
-            component={ProfileScreen}
-            options={{headerTitle:"Profile"}}
+            options={{ headerTitle: (props) => <HeaderNavTile />, headerTintColor: darkGrey ,headerShown:false}}
           />
 
 

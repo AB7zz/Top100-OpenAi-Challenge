@@ -16,7 +16,7 @@ const weakestTopic = async(req, res) => {
         const weakestTopic = await getWeakestTopic(wrongquestions);
         const url = await fetchURL(weakestTopic);
         console.log(url)
-        res.send({weakestTopic, url})
+        res.json({weakestTopic, url})
     }catch(error){
         console.log(error)
     }

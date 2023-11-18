@@ -171,7 +171,7 @@ function Questions() {
   }
 
 
-  if(questions &&  !userDetails.points?.id && currentQuestionIndex == questions.length-1){
+  if(questions &&  currentQuestionIndex == questions.length-1){
     onSubmit();
     return (
       <div className='w-screen h-screen justify-center items-center flex'>
@@ -184,7 +184,7 @@ function Questions() {
 
   return (
     <div>
-      {questions && currentQuestionIndex < questions.length ? (
+      {questions && currentQuestionIndex < questions.length-1 ? (
         renderQuestion(questions)
       ) : ""}
     </div>

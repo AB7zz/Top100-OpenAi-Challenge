@@ -45,9 +45,8 @@ function Otp({ handleLoginchange,PhoneNumber }) {
               userType: userDetails.type == 0 ? 'university' : userDetails.type == 1 ? 'teacher' : 'student'
             };
             window.postMessage(JSON.stringify(messageData), '*');
-            window.location.replace('/home')
           }
-
+          window.location.replace('/home')
         }else{
           window.location.replace('/setdata')
         }
